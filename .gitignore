@@ -1,0 +1,38 @@
+# --- 의존성 ---
+node_modules/
+
+# --- 환경 변수·비밀 (실제 값 커밋 금지, 예시 파일만 허용) ---
+.env
+.env.*
+!.env.example
+
+# --- OpenCode 로컬 런타임 (설정·에이전트·플러그인은 추적) ---
+.opencode/logs/
+.opencode/data/
+.opencode/cache/
+.opencode/state/
+.opencode/update-check.json
+.opencode/node_modules/
+.opencode/package.json
+.opencode/package-lock.json
+.opencode/bun.lock
+.opencode/.gitignore
+
+# --- Cline 로컬 설치·런타임 (의존성 정의는 루트 package.json) ---
+.cline/cache/
+.cline/data/
+.cline/state/
+.cline/logs/
+.cline/node_modules/
+.cline/package.json
+.cline/package-lock.json
+
+# --- Orca 워크트리 런타임 ---
+.orca/worktrees/
+
+# --- OS·편집기 임시 파일 ---
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log
+*.tmp
