@@ -1,0 +1,34 @@
+{
+  "categories": [
+    {
+      "title": "📌 프로젝트 소개",
+      "items": [
+        {
+          "title": "모두의 AI 개요",
+          "path": "intro/01-overview",
+          "icon": "⚡"
+        },
+        {
+          "title": "시스템 아키텍처",
+          "path": "intro/02-architecture",
+          "icon": "🏗️"
+        }
+      ]
+    },
+    {
+      "title": "🎓 마스터 클래스 강의",
+      "items": [
+        {
+          "title": "제1강: 모두의 AI 시작하기",
+          "path": "lectures/chapter-01",
+          "icon": "🚀"
+        },
+        {
+          "title": "제2강: 소버린 모델 구축법",
+          "path": "lectures/chapter-02",
+          "icon": "🧠"
+        }
+      ]
+    }
+  ]
+}

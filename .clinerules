@@ -20,7 +20,7 @@ The project follows Korean documentation standards and all responses should be i
 - ESM/TypeScript 규격(import/export)은 하위 프로젝트 코드에 준용한다
 
 # Project Structure
-- moduai-pr 루트: AI 프리젠테이션 사이트·도전자 스탭·활동 내역 관리 (E:\\up\\0-project\\git\\xtx9999\\moduai-pr)
+- moduai-pr 루트(저장소 기준): AI 프리젠테이션 사이트·도전자 스탭·활동 내역 관리
 - 멀티미디어 콘텐츠 focus: YouTube 동영상, 프레젠테이션 자료 관리
 - AI 도구 로컬 격리: .cline/, .opencode/, .qwen/, .vibe/, .codex/
 

@@ -1,0 +1,107 @@
+<!-- 파일명: public/docs.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>강의 및 문서 — 모두의 AI (moduai)</title>
+  <meta name="description" content="모두의 AI 프로젝트 공식 가이드 및 마크다운 강의 뷰어">
+
+  <!-- 스타일시트 -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/docs.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
+
+  <!-- 코드 하이라이트 스타일 (Highlight.js CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo">
+        <span>⚡ moduai</span>
+        <span class="brand-badge">Docs & Lectures</span>
+      </a>
+
+      <button class="mobile-toggle" aria-label="사이드바 메뉴 토글" onclick="document.querySelector('.docs-sidebar').classList.toggle('open')">
+        📑 목차
+      </button>
+
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-item"><a href="index.html">홈으로</a></li>
+          <li class="nav-item"><a href="docs.html" class="active">강의 & 문서</a></li>
+          <li class="nav-item"><a href="https://github.com/xtx9/moduai-pr" target="_blank">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 문서 레이아웃 컨테이너 -->
+  <div class="docs-container">
+    
+    <!-- 1. 좌측 사이드바 (카테고리 및 강의 목록) -->
+    <aside class="docs-sidebar">
+      <nav id="docs-sidebar-menu">
+        <!-- JS(markdown-viewer.js)가 content/navigation.json을 기반으로 동적 렌더링 -->
+        <div class="docs-loader">
+          <div class="spinner" style="width:24px; height:24px;"></div>
+          <p style="font-size:0.85rem;">목차 로드 중...</p>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- 2. 중앙 본문 마크다운 렌더링 영역 -->
+    <main class="docs-content">
+      <article id="docs-markdown-body" class="markdown-body">
+        <!-- 마크다운 파싱 결과 삽입 -->
+      </article>
+
+      <!-- 이전 / 다음 강의 이동 버튼 -->
+      <nav id="docs-pagination" class="doc-pagination" aria-label="문서 네비게이션">
+        <!-- JS로 동적 생성 -->
+      </nav>
+    </main>
+
+    <!-- 3. 우측 온페이지 목차 (TOC) -->
+    <aside class="docs-toc">
+      <div class="toc-title">현재 문서 목차</div>
+      <ul id="docs-toc-list" class="toc-list">
+        <!-- JS로 동적 수집 -->
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- 푸터 -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>© 2026 moduai (모두의 AI) — 오픈소스 마크다운 지식 플랫폼</p>
+      <p><a href="index.html">홈으로 돌아가기</a></p>
+    </div>
+  </footer>
+
+  <!-- 서드파티 라이브러리 (CDN) -->
+  <!-- 1. Marked.js (마크다운 파서) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.1/marked.min.js"></script>
+  <!-- 2. Highlight.js (코드 문법 강조) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <!-- 3. Mermaid.js (그래프 및 다이어그램) -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js"></script>
+
+  <!-- 플랫폼 스크립트 모듈 -->
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/diagram-renderer.js"></script>
+  <script src="assets/js/markdown-viewer.js"></script>
+
+  <script>
+    // 뷰어 실행
+    document.addEventListener('DOMContentLoaded', () => {
+      const viewer = new MarkdownViewer();
+      viewer.init();
+    });
+  </script>
+</body>
+</html>
