@@ -199,8 +199,8 @@ class MarkdownViewer {
 
       // 문서 관리용 메타데이터는 원본 Markdown에 유지하되 웹 화면에서는 숨깁니다.
       const displayMarkdown = markdownText
-        .replace(/^>\\s*(?:파일명|최종 수정일|분류):.*(?:\\r?\\n|$)/gm, '')
-        .replace(/^\\s+/, '');
+        .replace(/^>\s*(?:파일명|최종 수정일|분류):.*(?:\r?\n|$)/gm, '')
+        .replace(/^\s+/, '');
       const parsedHtml = marked.parse(displayMarkdown);
       this.contentContainer.innerHTML = parsedHtml;
 
