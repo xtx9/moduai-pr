@@ -1,30 +1,30 @@
 // 파일명: public/assets/js/diagram-renderer.js
 /**
  * moduai-pr 다이어그램 렌더러 모듈
- * Mermaid.js를 활용하여 마크다운 내 mermaid 코드 블록을 SVG 다이어그램으로 변환
+ * Mermaid.js를 활용하여 ChatGPT 라이트 모드에 최적화된 SVG 다이어그램 렌더링
  */
 
 const DiagramRenderer = {
   /**
-   * Mermaid 라이브러리 초기화
+   * Mermaid 라이브러리 초기화 (라이트 모드 테마)
    */
   init() {
     if (typeof mermaid !== 'undefined') {
       mermaid.initialize({
         startOnLoad: false,
-        theme: 'dark',
+        theme: 'neutral',
         themeVariables: {
-          darkMode: true,
-          background: '#0b1120',
-          primaryColor: '#1e293b',
-          primaryTextColor: '#f8fafc',
-          primaryBorderColor: '#38bdf8',
-          lineColor: '#818cf8',
-          secondaryColor: '#334155',
-          tertiaryColor: '#0f172a'
+          darkMode: false,
+          background: '#ffffff',
+          primaryColor: '#f8fafc',
+          primaryTextColor: '#0d0d0d',
+          primaryBorderColor: '#0284c7',
+          lineColor: '#64748b',
+          secondaryColor: '#f1f5f9',
+          tertiaryColor: '#ffffff',
+          fontFamily: '-apple-system, BlinkMacSystemFont, Pretendard, "Segoe UI", Roboto, sans-serif'
         },
-        securityLevel: 'loose',
-        fontFamily: '-apple-system, BlinkMacSystemFont, Pretendard, sans-serif'
+        securityLevel: 'loose'
       });
     }
   },
@@ -36,7 +36,6 @@ const DiagramRenderer = {
   async renderAll(containerElement) {
     if (!containerElement || typeof mermaid === 'undefined') return;
 
-    // pre code.language-mermaid 또는 .mermaid 요소 탐색
     const mermaidElements = containerElement.querySelectorAll('pre code.language-mermaid, div.mermaid');
     
     for (let i = 0; i < mermaidElements.length; i++) {
@@ -51,12 +50,11 @@ const DiagramRenderer = {
         const { svg } = await mermaid.render(id, code);
         wrapper.innerHTML = svg;
         
-        // 부모 pre 태그가 있다면 pre 태그 자체를 wrapper로 교체
         const targetNode = el.tagName.toLowerCase() === 'code' ? el.parentElement : el;
         targetNode.parentNode.replaceChild(wrapper, targetNode);
       } catch (err) {
         console.error('Mermaid 다이어그램 렌더링 오류:', err);
-        wrapper.innerHTML = `<p style="color: #f87171; font-size: 0.9rem;">⚠️ 다이어그램 렌더링 실패: ${err.message}</p>`;
+        wrapper.innerHTML = `<p style="color: #ef4444; font-size: 0.88rem;">다이어그램 렌더링 실패: ${err.message}</p>`;
       }
     }
   }

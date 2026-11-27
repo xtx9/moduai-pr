@@ -1,5 +1,25 @@
 # TODO 완료 이력 — moduai-pr
 
+## 2026-11-27 — 심볼 적용·사이드바 토글·이모티콘 정돈·ChatGPT 라이트 모드 개편
+
+- [x] 심볼 SVG 복사 및 자산 배치 (`public/assets/images/symbol.svg`) — 완료: 2026-11-27
+- [x] ChatGPT 라이트 모드 CSS 전면 개편 (`style.css`, `docs.css`) — 완료: 2026-11-27
+- [x] 사이드바 접기/펼치기(토글) 및 localStorage 상태 저장 구현 (`markdown-viewer.js`) — 완료: 2026-11-27
+- [x] 이모티콘 전면 제거 및 텍스트/마크다운 정돈 (`navigation.json`, `content/*`, `index.html`) — 완료: 2026-11-27
+- [x] HTML 헤더 심볼 SVG 및 파비콘 적용 (`index.html`, `docs.html`) — 완료: 2026-11-27
+- [x] 검증 및 작업 이력 아카이브 — 완료: 2026-11-27
+
+관련 로그: `docs/askLogs/ask-20261127052300.md` / 변경 기록: `docs/CHANGELOG/20261127052300-chatgpt-light-theme-and-symbol.md`
+
+## 2026-11-27 — GitHub Pages 웹 UI Actions 배포 및 도메인 설정 안내
+
+- [x] GitHub 원격 푸시 상태 확인 (`ae6dc68` origin/main 확인 완료) — 완료: 2026-11-27
+- [x] Settings → Pages → GitHub Actions (Static HTML, path: './public') 설정 절차 안내 — 완료: 2026-11-27
+- [x] Custom domain(`moduai-pr.smartflex.org`) 및 Enforce HTTPS 설정 안내 — 완료: 2026-11-27
+- [x] 작업 이력 기록 및 답변 제공 — 완료: 2026-11-27
+
+관련 로그: `docs/askLogs/ask-20261127044600.md` / 변경 기록: `docs/CHANGELOG/20261127044600-github-actions-pages-setup-guide.md`
+
 ## 2026-11-27 — 웹 루트 보안 격리를 위한 public/ 디렉토리 분리
 
 - [x] `public/` 디렉터리 생성 및 웹 자산(`index.html`, `docs.html`, `assets/`, `content/`, `.nojekyll`) 이동 — 완료: 2026-11-27

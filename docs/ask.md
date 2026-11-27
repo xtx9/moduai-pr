@@ -1,5 +1,42 @@
 # 요청 기록 — moduai-pr
 
+## 2026-11-27 — 심볼 적용·사이드바 토글·이모티콘 정돈·ChatGPT 라이트 모드 개편
+
+사용자 요청:
+> 사이트 심볼은 /mnt/e/up/0-project/git/xtx9999/moduai-dev/docs/참고자요/심볼/심볼.svg 으로 해주고 왼쪽 사이드 바는 토글되게 해줘 . 그리고 과도한 이모티콘은 자제 해 깔끔한 문서야 되니까. 테마를 chatgpt 라이트 모드로 해줘
+
+**요청 해석(적용한 기본값)**:
+- 심볼: `moduai-dev/docs/참고자요/심볼/심볼.svg` 원본을 `public/assets/images/symbol.svg`로 복사하여 파비콘 및 헤더 로고로 적용.
+- 사이드바 토글: 상단 토글 버튼(`<button class="sidebar-toggle-btn">`) 및 `localStorage` 기반 상태 보존 지원.
+- 이모티콘 정돈: 사이드바, 본문 마크다운, 랜딩 페이지에서 장식용 이모티콘 배제 및 미니멀 테크 스타일 정돈.
+- 테마: ChatGPT 라이트 모드(화이트 `#ffffff`, 사이드바 `#f9f9f9`, 차콜 텍스트 `#0d0d0d`, 미니멀 보더 `#e5e5e5`, 라이트 Mermaid) 전면 개편.
+
+**처리 상태**: ✅ 완료 (심볼 탑재, 토글 구현, 이모지 제거, ChatGPT 라이트 테마 전환 완료)
+**완료 일시**: 2026-11-27 05:23:00 UTC (KST 2026-11-27 14:23:00)
+**관련 로그**: `docs/askLogs/ask-20261127052300.md`
+
+---
+
+## 2026-11-27 — GitHub 저장소(xtx9/moduai-pr) Pages 웹 화면별 설정 절차 안내
+
+사용자 요청:
+> 이제 깃헙 주소에 가서 페이지 설정을 어떻게 하지
+
+**요청 해석(적용한 기본값)**:
+- 대상: `https://github.com/xtx9/moduai-pr`
+- 원격 상태 실사: 사용자가 커밋 `ae6dc68`로 `public/` 구조를 `origin/main`에 이미 정상 푸시 완료함 확인.
+- 작업 내용:
+  1. GitHub Pages 웹 화면에서 `GitHub Actions`를 통한 `public/` 배포 설정 절차 안내 (Static HTML 템플릿의 `path: './public'` 설정).
+  2. Custom domain(`moduai-pr.smartflex.org`) 등록 절차.
+  3. DNS 확인 및 `Enforce HTTPS` 체크박스 활성화 절차.
+- 산출: 단계별 가이드 안내 및 기록 완료.
+
+**처리 상태**: ✅ 완료 (GitHub Actions public 배포 4단계 안내 완료)
+**완료 일시**: 2026-11-27 04:46:00 UTC (KST 2026-11-27 13:46:00)
+**관련 로그**: `docs/askLogs/ask-20261127044600.md`
+
+---
+
 ## 2026-11-27 — 웹 루트 보안 노출 방지를 위한 public/ 하위 디렉토리 분리
 
 사용자 요청:

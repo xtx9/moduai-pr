@@ -12,18 +12,18 @@
 
 ```mermaid
 flowchart TD
-    Hub["moduai\n(종합 컨트롤 타워 & 메타 관리)"] --> Dev["moduai-dev\n(개발 환경 & 빌드 구성)"]
-    Hub --> PR["moduai-pr\n(프리젠테이션 & 웹 배포)"]
-    Hub --> Report["moduai-Report\n(멘토링 및 비공개 소통)"]
-    Hub --> CDN["moduai-cdn\n(무료 정적 에셋 자료실)"]
-    Hub --> Doc["moduai-doc\n(개발 기술 지식 아카이브)"]
+    Hub["moduai (종합 컨트롤 타워 & 메타 관리)"] --> Dev["moduai-dev (개발 환경 & 빌드 구성)"]
+    Hub --> PR["moduai-pr (프리젠테이션 & 웹 배포)"]
+    Hub --> Report["moduai-Report (멘토링 및 비공개 소통)"]
+    Hub --> CDN["moduai-cdn (무료 정적 에셋 자료실)"]
+    Hub --> Doc["moduai-doc (개발 기술 지식 아카이브)"]
 ```
 
 ---
 
 ## 2. 웹 서비스 및 배포 파이프라인
 
-`moduai-pr`은 복잡한 서버리스 빌드 없이 GitHub Pages와 Cloudflare의 장점을 결합하여 0ms에 가까운 초고속 로딩을 제공합니다.
+`moduai-pr`은 정적 호스팅의 장점을 극대화하여 GitHub Pages와 Cloudflare를 통해 빠른 페이지 렌더링을 제공합니다.
 
 ```mermaid
 sequenceDiagram
@@ -47,6 +47,6 @@ sequenceDiagram
 1. **`moduai`**: 전체 프로젝트의 총괄 컨트롤 타워 및 규칙(AGENTS.md) 수립
 2. **`moduai-pr`**: 일반 대중, 투자자, 평가위원을 위한 공식 쇼케이스 및 강의 사이트
 3. **`moduai-dev`**: 실제 AI 모델 학습 및 로컬/GCP 서버 배포 코드베이스
-4. **`moduai-cdn`**: 이미지, PDF, 대용량 바이너리 파일을 위한 무과금 CDN 허브
+4. **`moduai-cdn`**: 이미지, 문서, 대용량 정적 에셋을 위한 무과금 CDN 허브
 5. **`moduai-doc`**: 프롬프트 엔지니어링 및 오픈소스 모델 튜닝 지식 저장소
-6. **`moduai-Report`**: 정부 지원사업(모두의 창업) 주관기관 및 멘토 전용 비공개 레포트
+6. **`moduai-Report`**: 정부 지원사업(모두의 창업) 주관기관 및 멘토 전용 비공개 보고서
