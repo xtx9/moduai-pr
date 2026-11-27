@@ -704,3 +704,62 @@
   .sidebar-toggle-btn { width:32px; height:32px; flex-basis:32px; }
   .platform-nav .btn-primary { font-size:.72rem; }
 }
+
+
+/* 문서 본문 간격: 여백을 줄여 더 간결하고 밀도 있게 표시 */
+.markdown-body {
+  line-height: 1.65;
+}
+
+.markdown-body h1 {
+  margin-bottom: 18px;
+  padding-bottom: 9px;
+}
+
+.markdown-body h2 {
+  margin-top: 30px;
+  margin-bottom: 11px;
+  padding-bottom: 5px;
+}
+
+.markdown-body h3 {
+  margin-top: 22px;
+  margin-bottom: 8px;
+}
+
+.markdown-body p {
+  margin-bottom: 12px;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  margin-bottom: 14px;
+}
+
+.markdown-body li {
+  margin-bottom: 3px;
+  line-height: 1.6;
+}
+
+.markdown-body blockquote {
+  margin: 16px 0;
+  padding: 11px 15px;
+}
+
+.markdown-body table {
+  margin: 18px 0;
+}
+
+.markdown-body th,
+.markdown-body td {
+  padding: 8px 11px;
+}
+
+.code-block-wrapper {
+  margin: 18px 0;
+}
+
+.mermaid-diagram-wrap {
+  margin: 20px 0;
+  padding: 18px;
+}
