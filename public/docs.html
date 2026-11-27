@@ -7,21 +7,21 @@
   <title>강의 및 문서 — 모두의 AI (moduai)</title>
   <meta name="description" content="모두의 AI 프로젝트 공식 가이드 및 마크다운 강의 뷰어">
 
-  <!-- 파비콘 (심볼 SVG 적용) -->
+  <!-- 파비콘 (심볼 SVG) -->
   <link rel="icon" type="image/svg+xml" href="assets/images/symbol.svg">
 
-  <!-- 스타일시트 (ChatGPT 라이트 모드) -->
+  <!-- 디자인 시스템 스타일시트 -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/docs.css">
 
-  <!-- 코드 하이라이트 스타일 (GitHub Light / StackOverflow Light) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+  <!-- 코드 하이라이트 스타일 (GitHub Dark 테마) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 </head>
 <body>
 
-  <!-- 헤더 -->
+  <!-- 상단 글로벌 헤더 -->
   <header class="site-header">
-    <div class="header-container">
+    <div class="header-container" style="max-width: 1400px;">
       <div class="header-left">
         <!-- 사이드바 접기/펼치기 토글 버튼 -->
         <button class="sidebar-toggle-btn" aria-label="사이드바 열기/닫기" title="사이드바 열기/닫기">
@@ -48,50 +48,52 @@
     </div>
   </header>
 
-  <!-- 문서 레이아웃 컨테이너 -->
-  <div class="docs-container">
-    
-    <!-- 1. 좌측 사이드바 (카테고리 및 강의 목록) -->
-    <aside class="docs-sidebar">
-      <nav id="docs-sidebar-menu">
-        <div class="docs-loader">
-          <div class="spinner" style="width:20px; height:20px;"></div>
-          <p style="font-size:0.82rem; color:var(--text-dim);">목차 로드 중...</p>
-        </div>
-      </nav>
-    </aside>
+  <!-- 메인 레이아웃 래퍼 (1400px 그리드) -->
+  <div class="docs-page-wrapper">
+    <div class="docs-container">
+      
+      <!-- 1. 좌측 사이드바 (270px) -->
+      <aside class="docs-sidebar">
+        <nav id="docs-sidebar-menu">
+          <div class="docs-loader">
+            <div class="spinner" style="width:20px; height:20px;"></div>
+            <p style="font-size:0.82rem; color:var(--text-dim);">목차 로드 중...</p>
+          </div>
+        </nav>
+      </aside>
 
-    <!-- 2. 중앙 본문 마크다운 렌더링 영역 -->
-    <main class="docs-content">
-      <article id="docs-markdown-body" class="markdown-body">
-        <!-- 마크다운 파싱 결과 동적 렌더링 -->
-      </article>
+      <!-- 2. 중앙 본문 마크다운 렌더링 영역 (최대 820px 본문) -->
+      <main class="docs-content">
+        <article id="docs-markdown-body" class="markdown-body">
+          <!-- 마크다운 파싱 결과가 여기에 동적으로 렌더링됩니다 -->
+        </article>
 
-      <!-- 이전 / 다음 강의 이동 버튼 -->
-      <nav id="docs-pagination" class="doc-pagination" aria-label="문서 네비게이션">
-        <!-- JS로 동적 생성 -->
-      </nav>
-    </main>
+        <!-- 이전 / 다음 강의 이동 버튼 -->
+        <nav id="docs-pagination" class="doc-pagination" aria-label="문서 네비게이션">
+          <!-- JS로 동적 생성 -->
+        </nav>
+      </main>
 
-    <!-- 3. 우측 온페이지 목차 (TOC) -->
-    <aside class="docs-toc">
-      <div class="toc-title">현재 문서 목차</div>
-      <ul id="docs-toc-list" class="toc-list">
-        <!-- JS로 동적 수집 -->
-      </ul>
-    </aside>
+      <!-- 3. 우측 온페이지 목차 (230px) -->
+      <aside class="docs-toc">
+        <div class="toc-title">현재 문서 목차</div>
+        <ul id="docs-toc-list" class="toc-list">
+          <!-- JS로 헤딩 태그 자동 수집 -->
+        </ul>
+      </aside>
 
+    </div>
   </div>
 
   <!-- 푸터 -->
   <footer class="site-footer">
-    <div class="footer-container">
+    <div class="footer-container" style="max-width: 1400px;">
       <p>© 2026 moduai (모두의 AI) — 오픈소스 마크다운 지식 플랫폼</p>
       <p><a href="index.html">홈으로 돌아가기</a></p>
     </div>
   </footer>
 
-  <!-- 서드파티 라이브러리 (CDN) -->
+  <!-- 서드파티 스크립트 라이브러리 (CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/marked@12.0.1/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js"></script>

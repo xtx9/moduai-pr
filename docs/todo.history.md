@@ -1,5 +1,20 @@
 # TODO 완료 이력 — moduai-pr
 
+## 2026-11-27 — Actions 배포 완료 및 public/CNAME 영구 적용
+
+- [x] Actions 일시 실패 감지 및 gh run rerun을 통한 배포 성공(✓) 완료 — 완료: 2026-11-27
+- [x] public/CNAME 생성 및 origin/main 푸시(f26f6f5) — 완료: 2026-11-27
+- [x] 라이브 서버 curl 검증 (index.html, docs.html, symbol.svg 200 OK 확인) — 완료: 2026-11-27
+
+관련 로그: `docs/askLogs/ask-20261127053000.md` / 변경 기록: `docs/CHANGELOG/20261127053000-actions-deployment-success-and-cname.md`
+
+## 2026-11-27 — 원격 워크플로우 커밋 Rebase 및 푸시 완료
+
+- [x] 원격 신규 커밋(static.yml) 확인 및 git pull --rebase origin main 실행 — 완료: 2026-11-27
+- [x] 최신 커밋(d352ce4) origin/main 푸시 성공 — 완료: 2026-11-27
+
+관련 로그: `docs/askLogs/ask-20261127052600.md` / 변경 기록: `docs/CHANGELOG/20261127052600-git-rebase-and-push.md`
+
 ## 2026-11-27 — 심볼 적용·사이드바 토글·이모티콘 정돈·ChatGPT 라이트 모드 개편
 
 - [x] 심볼 SVG 복사 및 자산 배치 (`public/assets/images/symbol.svg`) — 완료: 2026-11-27

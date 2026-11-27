@@ -1,12 +1,13 @@
 // 파일명: public/assets/js/markdown-viewer.js
 /**
  * moduai-pr 마크다운 문서 & 강의 뷰어 모듈
- * 1) content/navigation.json 기반 좌측 사이드바 구성
- * 2) 사이드바 접기/펼치기(토글) 및 상태 저장(localStorage) 지원
- * 3) 이모티콘이 배제된 깔끔한 텍스트 네비게이션
- * 4) Marked.js를 통한 실시간 HTML 파싱 및 highlight.js 문법 강조
- * 5) DiagramRenderer를 통한 라이트 모드 다이어그램 렌더링
- * 6) 본문 H2, H3 헤딩 기반 우측 온페이지 목차(TOC) 자동 생성
+ * 기준: docs/스타일-가이드.md (ChatGPT 라이트 모드 디자인 시스템)
+ * 1) content/navigation.json 기반 사이드바 자동 구성
+ * 2) 사이드바 접기/펼치기(토글) 및 localStorage 상태 저장
+ * 3) Marked.js 파싱 및 highlight.js 코드 문법 강조
+ * 4) 코드 블록 상단 언어 헤더 및 원클릭 복사(Copy) 기능 탑재
+ * 5) DiagramRenderer 라이트 테마 다이어그램 렌더링
+ * 6) 본문 H2, H3 헤딩 기반 우측 TOC 생성 및 스크롤 감지
  */
 
 class MarkdownViewer {
@@ -30,24 +31,19 @@ class MarkdownViewer {
     DiagramRenderer.init();
     this.setupSidebarToggle();
 
-    // 1. 사이드바 네비게이션 데이터 로드
     await this.loadNavigation();
 
-    // 2. 해시 변경 리스너 등록
     window.addEventListener('hashchange', () => this.handleHashChange());
-
-    // 3. 첫 페이지 로드
     this.handleHashChange();
   }
 
   /**
-   * 사이드바 접기/펼치기(토글) 기능 및 로컬 스토리지 상태 복원
+   * 사이드바 접기/펼치기 및 로컬 스토리지 상태 복원
    */
   setupSidebarToggle() {
     const toggleButtons = document.querySelectorAll('.sidebar-toggle-btn');
     if (!this.sidebarElement) return;
 
-    // 저장된 사이드바 상태 복원 (데스크톱 기준)
     const isCollapsed = localStorage.getItem('moduai-sidebar-collapsed') === 'true';
     if (isCollapsed && window.innerWidth > 768) {
       this.sidebarElement.classList.add('collapsed');
@@ -61,7 +57,7 @@ class MarkdownViewer {
   }
 
   /**
-   * 사이드바 상태 전환
+   * 사이드바 토글 상태 전환
    */
   toggleSidebar() {
     if (!this.sidebarElement) return;
@@ -114,7 +110,7 @@ class MarkdownViewer {
   }
 
   /**
-   * 사이드바 DOM 생성 (깔끔한 텍스트 기반)
+   * 사이드바 메뉴 렌더링
    * @param {Object} navData 
    */
   renderSidebar(navData) {
@@ -150,7 +146,7 @@ class MarkdownViewer {
   }
 
   /**
-   * 해시 변경 처리
+   * 해시 변경 처리 (라우팅)
    */
   handleHashChange() {
     let hash = window.location.hash.replace(/^#/, '').trim();
@@ -164,7 +160,6 @@ class MarkdownViewer {
     if (hash) {
       this.loadDocument(hash);
       
-      // 모바일 화면에서는 문서 클릭 시 사이드바 자동 닫기
       if (window.innerWidth <= 768 && this.sidebarElement) {
         this.sidebarElement.classList.add('collapsed');
       }
@@ -172,7 +167,7 @@ class MarkdownViewer {
   }
 
   /**
-   * 마크다운 문서 로드 및 렌더링
+   * 마크다운 문서 비동기 로드 및 화면 렌더링
    * @param {string} docPath 
    */
   async loadDocument(docPath) {
@@ -187,7 +182,7 @@ class MarkdownViewer {
     this.contentContainer.innerHTML = `
       <div class="docs-loader">
         <div class="spinner"></div>
-        <p style="font-size: 0.9rem;">문서를 불러오는 중입니다...</p>
+        <p style="font-size: 0.88rem; color: var(--text-dim);">문서를 불러오는 중입니다...</p>
       </div>
     `;
 
@@ -199,25 +194,88 @@ class MarkdownViewer {
       const parsedHtml = marked.parse(markdownText);
       this.contentContainer.innerHTML = parsedHtml;
 
+      // 1. 코드 블록에 헤더 바 및 복사 버튼 부착
+      this.enhanceCodeBlocks();
+
+      // 2. 우측 온페이지 목차(TOC) 생성
       this.generateTableOfContents();
+
+      // 3. Mermaid 다이어그램 렌더링
       await DiagramRenderer.renderAll(this.contentContainer);
+
+      // 4. 하단 이전/다음 문서 네비게이션 생성
       this.renderPagination(docPath);
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
     } catch (err) {
       this.contentContainer.innerHTML = `
-        <div style="padding: 30px; background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px;">
-          <h2 style="color: #b91c1c; font-size: 1.2rem; margin-bottom: 8px;">문서 로드 실패</h2>
-          <p style="color: #7f1d1d; font-size: 0.95rem;">${err.message}</p>
-          <p style="margin-top: 8px; color: #991b1b; font-size: 0.85rem;">요청 경로: <code>${fullUrl}</code></p>
+        <div style="padding: 24px 28px; background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px;">
+          <h2 style="color: #b91c1c; font-size: 1.15rem; margin-bottom: 8px;">문서 로드 실패</h2>
+          <p style="color: #7f1d1d; font-size: 0.92rem;">${err.message}</p>
+          <p style="margin-top: 8px; color: #991b1b; font-size: 0.82rem;">요청 경로: <code>${fullUrl}</code></p>
         </div>
       `;
     }
   }
 
   /**
-   * 활성 링크 하이라이트
+   * 코드 블록 고도화: 상단 언어 라벨 및 복사 버튼 래핑
+   */
+  enhanceCodeBlocks() {
+    const preBlocks = this.contentContainer.querySelectorAll('pre');
+
+    preBlocks.forEach((pre) => {
+      const code = pre.querySelector('code');
+      if (!code) return;
+
+      // mermaid는 제외
+      if (code.classList.contains('language-mermaid')) return;
+
+      // 언어 클래스 감지 (예: language-python -> python)
+      let language = 'text';
+      code.classList.forEach(cls => {
+        if (cls.startsWith('language-')) {
+          language = cls.replace('language-', '');
+        }
+      });
+
+      // 래퍼 컨테이너 생성
+      const wrapper = document.createElement('div');
+      wrapper.className = 'code-block-wrapper';
+
+      // 상단 헤더 (언어 + 복사 버튼)
+      const header = document.createElement('div');
+      header.className = 'code-block-header';
+      header.innerHTML = `
+        <span>${language.toUpperCase()}</span>
+        <button class="copy-code-btn" type="button">복사</button>
+      `;
+
+      // 복사 이벤트 연결
+      const copyBtn = header.querySelector('.copy-code-btn');
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(code.textContent);
+          copyBtn.textContent = '복사됨!';
+          copyBtn.style.color = '#38bdf8';
+          setTimeout(() => {
+            copyBtn.textContent = '복사';
+            copyBtn.style.color = '';
+          }, 2000);
+        } catch (err) {
+          console.error('클립보드 복사 실패:', err);
+        }
+      });
+
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(header);
+      wrapper.appendChild(pre);
+    });
+  }
+
+  /**
+   * 활성 사이드바 링크 스타일 적용
    * @param {string} docPath 
    */
   updateActiveSidebarLink(docPath) {
@@ -232,7 +290,7 @@ class MarkdownViewer {
   }
 
   /**
-   * 온페이지 목차(TOC) 생성
+   * 우측 온페이지 목차(TOC) 생성
    */
   generateTableOfContents() {
     if (!this.tocContainer) return;
@@ -240,7 +298,7 @@ class MarkdownViewer {
 
     const headings = this.contentContainer.querySelectorAll('h2, h3');
     if (headings.length === 0) {
-      this.tocContainer.innerHTML = '<li style="color: var(--text-dim); font-size: 0.82rem;">목차 없음</li>';
+      this.tocContainer.innerHTML = '<li style="color: var(--text-dim); font-size: 0.8rem;">목차 없음</li>';
       return;
     }
 
@@ -265,7 +323,7 @@ class MarkdownViewer {
   }
 
   /**
-   * 이전/다음 문서 네비게이션 버튼
+   * 이전/다음 문서 네비게이션 카드 생성
    * @param {string} currentPath 
    */
   renderPagination(currentPath) {
