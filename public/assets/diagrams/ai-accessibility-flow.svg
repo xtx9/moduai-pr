@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-labelledby="t d">
+<title id="t">AI 기술 대중화 과정</title><desc id="d">이해, 구성, 활용, 공유의 네 단계가 반복되며 도구와 문서, 사례가 진입장벽을 낮추는 과정</desc>
+<defs><style>text{font-family:Arial,'Noto Sans KR',sans-serif;fill:#18324b}.head{font-size:26px;font-weight:700}.sub{font-size:18px;fill:#547087}.arrow{stroke:#75a9cc;stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round}</style></defs>
+<rect x="2" y="2" width="896" height="416" rx="24" fill="#f7fbff" stroke="#dceaf4"/>
+<g fill="#fff" stroke="#b9d7ec" stroke-width="2">
+<rect x="35" y="90" width="185" height="130" rx="18"/><rect x="260" y="90" width="185" height="130" rx="18"/><rect x="485" y="90" width="185" height="130" rx="18"/><rect x="710" y="90" width="155" height="130" rx="18"/>
+</g>
+<g text-anchor="middle"><text class="head" x="127" y="145">이해</text><text class="sub" x="127" y="180">쉽게 배우기</text><text class="head" x="352" y="145">구성</text><text class="sub" x="352" y="180">작게 시작하기</text><text class="head" x="577" y="145">활용</text><text class="sub" x="577" y="180">문제 해결하기</text><text class="head" x="787" y="145">공유</text><text class="sub" x="787" y="180">경험 나누기</text></g>
+<g class="arrow"><path d="M225 155h25m-9 -9 9 9-9 9"/><path d="M450 155h25m-9 -9 9 9-9 9"/><path d="M675 155h25m-9 -9 9 9-9 9"/></g>
+<rect x="105" y="285" width="690" height="78" rx="16" fill="#eaf5ff" stroke="#b9d7ec" stroke-width="2"/>
+<text class="head" x="450" y="318" text-anchor="middle">진입장벽을 낮추는 기반</text><text class="sub" x="450" y="346" text-anchor="middle">안내 문서 · 쉬운 도구 · 공개 모델 · 실제 활용 사례</text>
+<path d="M787 230 V260 H450 V280" class="arrow"/>
+</svg>

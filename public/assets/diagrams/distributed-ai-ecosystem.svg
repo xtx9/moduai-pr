@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" role="img" aria-labelledby="t d">
+<title id="t">분산형 AI 생태계 네트워크</title><desc id="d">개인, 개발자, 조직, 공동체가 서로 연결되어 다양한 AI와 경험을 교환하는 네트워크</desc>
+<defs><style>text{font-family:Arial,'Noto Sans KR',sans-serif;fill:#18324b}.head{font-size:25px;font-weight:700}.sub{font-size:18px;fill:#547087}.edge{stroke:#86b5d5;stroke-width:3;fill:none;stroke-linecap:round}.node{fill:#fff;stroke:#9fc8e2;stroke-width:2}.core{fill:#eaf5ff;stroke:#4b9bd3;stroke-width:3}</style></defs>
+<rect x="2" y="2" width="896" height="496" rx="24" fill="#f7fbff" stroke="#dceaf4"/>
+<g class="edge"><path d="M450 245 L220 115 M450 245 L680 115 M450 245 L220 380 M450 245 L680 380 M220 115 L680 115 M220 380 L680 380 M220 115 L220 380 M680 115 L680 380"/></g>
+<rect class="core" x="335" y="185" width="230" height="120" rx="22"/><text class="head" x="450" y="232" text-anchor="middle">열린 AI 생태계</text><text class="sub" x="450" y="267" text-anchor="middle">연결 · 협력 · 공유</text>
+<g class="node"><rect x="95" y="65" width="250" height="100" rx="18"/><rect x="555" y="65" width="250" height="100" rx="18"/><rect x="95" y="335" width="250" height="100" rx="18"/><rect x="555" y="335" width="250" height="100" rx="18"/></g>
+<g text-anchor="middle"><text class="head" x="220" y="108">개인</text><text class="sub" x="220" y="137">나에게 맞는 AI</text><text class="head" x="680" y="108">개발자</text><text class="sub" x="680" y="137">모델과 도구 개발</text><text class="head" x="220" y="378">조직</text><text class="sub" x="220" y="407">업무와 서비스 적용</text><text class="head" x="680" y="378">공동체</text><text class="sub" x="680" y="407">지식과 경험 공유</text></g>
+<text class="sub" x="450" y="470" text-anchor="middle">하나의 중심에 종속되지 않고, 각자의 선택을 존중하며 연결</text>
+</svg>

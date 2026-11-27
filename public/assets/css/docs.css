@@ -628,3 +628,24 @@
 .sidebar-category-group:not(.expanded) .sidebar-sublist-wrap {
   pointer-events: none;
 }
+
+
+/* 저장소에 버전 관리되는 SVG 설명 다이어그램 */
+.markdown-body img[src*="/diagrams/"] {
+  width: 100%;
+  max-width: 100%;
+  max-height: none;
+  height: auto;
+  object-fit: contain;
+  margin: 30px auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  background: #f7fbff;
+}
+@media (max-width: 768px) {
+  .markdown-body img[src*="/diagrams/"] {
+    max-height: none;
+    margin: 22px auto;
+    border-radius: 12px;
+  }
+}
