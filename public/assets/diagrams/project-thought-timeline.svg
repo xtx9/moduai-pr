@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="112" viewBox="0 0 760 112" role="img" aria-labelledby="title desc">
+  <title id="title">모두의 AI 생각과 타임라인</title>
+  <desc id="desc">생각의 시작에서 자원과 방법을 찾고, 방향을 구체화해 프로젝트를 확장해 온 흐름</desc>
+  <rect x="1" y="1" width="758" height="110" rx="14" fill="#f8fbff" stroke="#dceaf5"/>
+  <path d="M92 43 H668" fill="none" stroke="#9bc8e3" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M657 36 L668 43 L657 50" fill="none" stroke="#4b9ac7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g font-family="Arial, 'Noto Sans KR', sans-serif" text-anchor="middle">
+    <g transform="translate(100 43)">
+      <circle r="13" fill="#fff" stroke="#1685bd" stroke-width="2.5"/>
+      <circle r="4" fill="#1685bd"/>
+      <text y="30" font-size="12" font-weight="700" fill="#173b56">생각의 시작</text>
+      <text y="46" font-size="10" fill="#668096">IDEA</text>
+    </g>
+    <g transform="translate(286 43)">
+      <circle r="13" fill="#fff" stroke="#1685bd" stroke-width="2.5"/>
+      <path d="M-5 0h10M0 -5v10" stroke="#1685bd" stroke-width="2" stroke-linecap="round"/>
+      <text y="30" font-size="12" font-weight="700" fill="#173b56">자원과 방법 찾기</text>
+      <text y="46" font-size="10" fill="#668096">EXPERIMENT</text>
+    </g>
+    <g transform="translate(474 43)">
+      <circle r="13" fill="#fff" stroke="#1685bd" stroke-width="2.5"/>
+      <path d="M-5 4L-1 -1L2 2L6 -5" fill="none" stroke="#1685bd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text y="30" font-size="12" font-weight="700" fill="#173b56">방향 구체화</text>
+      <text y="46" font-size="10" fill="#668096">DIRECTION</text>
+    </g>
+    <g transform="translate(660 43)">
+      <circle r="13" fill="#1685bd"/>
+      <path d="M-6 0h12M1 -5l5 5-5 5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text y="30" font-size="12" font-weight="700" fill="#173b56">프로젝트의 확장</text>
+      <text y="46" font-size="10" fill="#668096">GROWTH</text>
+    </g>
+  </g>
+</svg>
