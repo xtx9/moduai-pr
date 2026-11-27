@@ -1,5 +1,15 @@
 # TODO 완료 이력 — moduai-pr
 
+## 2026-11-27 — 디자인 시스템 수립 및 강의/문서 뷰어 전면 리팩토링
+
+- [x] docs/스타일-가이드.md (디자인 시스템 규격서: 컬러, 폰트, 여백, 컴포넌트) 작성 — 완료: 2026-11-27
+- [x] public/assets/css/docs.css 전면 리팩토링 (1400px 컨테이너, 본문 타이포그래피 극대화) — 완료: 2026-11-27
+- [x] public/docs.html 레이아웃 일체감 및 클래스 구조 보강 — 완료: 2026-11-27
+- [x] markdown-viewer.js 코드 블록 원클릭 복사(Copy) 버튼 탑재 — 완료: 2026-11-27
+- [x] GitHub 원격 커밋 & 푸시(a99de38) 완료 — 완료: 2026-11-27
+
+관련 로그: `docs/askLogs/ask-20261127053600.md` / 변경 기록: `docs/CHANGELOG/20261127053600-docs-viewer-redesign.md`
+
 ## 2026-11-27 — Actions 배포 완료 및 public/CNAME 영구 적용
 
 - [x] Actions 일시 실패 감지 및 gh run rerun을 통한 배포 성공(✓) 완료 — 완료: 2026-11-27

@@ -1,0 +1,38 @@
+<!-- 파일명: docs/index.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ModuAI Docs</title>
+  <link rel="icon" href="assets/images/심볼.svg" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/js/markdown.js" defer></script>
+  <script src="/assets/js/graph.js" defer></script>
+</head>
+<body class="light">
+  <div id="sidebar" class="sidebar">
+    <button id="toggleBtn">⮞</button>
+    <nav id="navMenu"></nav>
+  </div>
+  <main id="content" class="content"></main>
+  <script>
+    // 사이드바 토글
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('toggleBtn');
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+    });
+    // 마크다운 파일 로드 (예시)
+    fetch('README.md')
+      .then(res => res.text())
+      .then(txt => {
+        document.getElementById('content').innerHTML = marked.parse(txt);
+        // 그래프 초기화 (graph.js 에서 구현)
+        if (typeof initGraphs === 'function') initGraphs();
+      });
+  </script>
+</body>
+</html>
