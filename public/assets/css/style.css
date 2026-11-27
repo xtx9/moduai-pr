@@ -448,3 +448,47 @@ a:hover {
   .category-card { min-height: 150px; }
   .category-index { margin-bottom: 14px; }
 }
+
+
+/* ==========================================================================
+   9. 공통 브랜드 푸터 — 모든 공개 페이지에서 동일하게 사용
+   ========================================================================== */
+.site-footer {
+  width: 100%; margin-top: auto; padding: 0 28px;
+  background: #f8fafc; border-top: 1px solid var(--border-color); color: var(--text-muted);
+}
+.footer-container {
+  max-width: 1180px; margin: 0 auto; padding: 42px 0 34px;
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(220px, .8fr);
+  gap: 48px; align-items: start;
+}
+.footer-main { min-width: 0; }
+.footer-brand {
+  display: inline-flex; align-items: center; gap: 10px; color: var(--text-main);
+  font-size: 1.15rem; font-weight: 750; letter-spacing: -.03em;
+}
+.footer-brand img { display: block; object-fit: contain; }
+.footer-brand:hover { color: var(--text-main); }
+.footer-manifesto {
+  margin-top: 18px; color: var(--text-main);
+  font-size: clamp(1.35rem, 2.6vw, 1.8rem); line-height: 1.25;
+  font-weight: 700; letter-spacing: -.035em;
+}
+.footer-subline { margin-top: 9px; color: var(--primary); font-size: .98rem; font-weight: 650; }
+.footer-korean { margin-top: 5px; color: var(--text-muted); font-size: .88rem; }
+.footer-navigation { display: flex; justify-content: flex-end; gap: clamp(28px, 5vw, 64px); padding-top: 8px; }
+.footer-nav-group { display: flex; flex-direction: column; align-items: flex-start; gap: 11px; min-width: 112px; }
+.footer-nav-heading { margin-bottom: 3px; color: var(--text-dim); font-size: .69rem; font-weight: 750; letter-spacing: .12em; }
+.footer-nav-group a { color: var(--text-muted); font-size: .86rem; text-decoration: none; }
+.footer-nav-group a:hover { color: var(--primary); }
+.footer-bottom {
+  max-width: 1180px; margin: 0 auto; min-height: 58px; padding: 15px 0;
+  border-top: 1px solid var(--border-color); display: flex; align-items: center;
+  justify-content: space-between; gap: 12px 24px; color: var(--text-dim); font-size: .77rem;
+}
+@media (max-width: 680px) {
+  .site-footer { padding: 0 20px; }
+  .footer-container { grid-template-columns: 1fr; gap: 28px; padding: 34px 0 28px; }
+  .footer-navigation { justify-content: flex-start; gap: 40px; padding-top: 0; }
+  .footer-bottom { align-items: flex-start; flex-direction: column; justify-content: center; gap: 4px; padding: 14px 0; }
+}
