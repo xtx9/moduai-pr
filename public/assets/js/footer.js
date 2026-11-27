@@ -1,11 +1,25 @@
 /* 파일명: public/assets/js/footer.js */
 /**
  * moduai 공통 푸터
- * 모든 공개 페이지에서 동일한 구조와 문구를 사용하도록 중앙 관리합니다.
+ * 메인 페이지는 브랜드·탐색 푸터, 문서 페이지는 간결한 저작권 푸터를 표시합니다.
  */
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('site-footer-root');
   if (!root) return;
+
+  const isDocsPage = /(?:^|\/)docs\.html$/.test(window.location.pathname);
+
+  if (isDocsPage) {
+    root.innerHTML = `
+      <footer class="site-footer docs-compact-footer">
+        <div class="docs-footer-bottom">
+          <p>© 2026 moduai (모두의 AI)</p>
+          <p>세상과 함께 만들고, 모두와 나눕니다.</p>
+        </div>
+      </footer>
+    `;
+    return;
+  }
 
   root.innerHTML = `
     <footer class="site-footer" aria-labelledby="footer-brand-title">
