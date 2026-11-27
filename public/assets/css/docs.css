@@ -763,3 +763,105 @@
   margin: 20px 0;
   padding: 18px;
 }
+
+
+/* 간결한 문서 리듬과 절제된 시각적 강조 */
+.markdown-body h1 {
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+}
+
+.markdown-body h2 {
+  position: relative;
+  margin-top: 26px;
+  margin-bottom: 9px;
+  padding: 0 0 5px 11px;
+  border-bottom: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--primary);
+  line-height: 1.35;
+}
+
+.markdown-body h3 {
+  margin-top: 18px;
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.markdown-body p {
+  margin: 0 0 10px;
+  line-height: 1.62;
+}
+
+.markdown-body strong {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  margin: 4px 0 12px;
+  padding-left: 21px;
+}
+
+.markdown-body li {
+  margin: 2px 0;
+  padding-left: 2px;
+  line-height: 1.55;
+}
+
+.markdown-body li > p {
+  margin-bottom: 4px;
+}
+
+.markdown-body hr {
+  margin: 18px 0;
+  border: 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.markdown-body blockquote {
+  margin: 13px 0;
+  padding: 9px 13px;
+  border-radius: 0 7px 7px 0;
+  background: var(--bg-secondary);
+}
+
+.markdown-body table {
+  margin: 14px 0;
+}
+
+.markdown-body th,
+.markdown-body td {
+  padding: 7px 10px;
+}
+
+.markdown-body img {
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 768px) {
+  .markdown-body {
+    font-size: .96rem;
+    line-height: 1.6;
+  }
+
+  .markdown-body h1 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+  }
+
+  .markdown-body h2 {
+    margin-top: 22px;
+    font-size: 1.35rem;
+  }
+
+  .markdown-body h3 {
+    margin-top: 16px;
+    font-size: 1.1rem;
+  }
+
+  .markdown-body p {
+    margin-bottom: 9px;
+  }
+}
