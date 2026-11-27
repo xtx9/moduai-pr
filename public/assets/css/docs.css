@@ -538,3 +538,67 @@
   body.sidebar-open { overflow: hidden; }
   .docs-content { padding: 28px 18px 64px; }
 }
+
+
+/* ==========================================================================
+   9. 문서 사이드바 대분류 독립 접기/펼치기
+   ========================================================================== */
+.sidebar-category-group { margin: 2px 0 8px; }
+
+.sidebar-category {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 12px;
+  border: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--text-main);
+  font: inherit;
+  font-size: .9rem;
+  font-weight: 650;
+  text-align: left;
+  cursor: pointer;
+  transition: background .18s ease, color .18s ease;
+}
+
+.sidebar-category:hover { background: var(--bg-hover); }
+.sidebar-category:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.sidebar-category-icon {
+  flex: 0 0 auto;
+  color: var(--text-dim);
+  font-size: .72rem;
+  transition: transform .2s ease;
+}
+
+.sidebar-category-group.expanded .sidebar-category-icon { transform: rotate(0deg); }
+.sidebar-category-group:not(.expanded) .sidebar-category-icon { transform: rotate(-90deg); }
+
+.sidebar-sublist-wrap {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows .24s ease, opacity .2s ease;
+  opacity: 1;
+}
+
+.sidebar-category-group:not(.expanded) .sidebar-sublist-wrap {
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+
+.sidebar-sublist-wrap > .sidebar-menu {
+  min-height: 0;
+  overflow: hidden;
+  margin: 4px 0 8px;
+}
+
+.sidebar-category-group:not(.expanded) .sidebar-sublist-wrap {
+  pointer-events: none;
+}
