@@ -336,10 +336,16 @@ class MarkdownViewer {
   updateActiveSidebarLink(docPath) {
     const allLinks = document.querySelectorAll('.sidebar-link');
     allLinks.forEach(link => {
-      if (link.dataset.path === docPath) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
+      const isActive = link.dataset.path === docPath;
+      link.classList.toggle('active', isActive);
+
+      if (isActive) {
+        const group = link.closest('.sidebar-category-group');
+        if (group) {
+          this.setCategoryExpanded(group, true);
+          const index = group.dataset.categoryIndex;
+          localStorage.removeItem(`moduai-category-${index}-collapsed`);
+        }
       }
     });
   }
