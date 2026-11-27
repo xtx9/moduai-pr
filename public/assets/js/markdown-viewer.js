@@ -116,25 +116,47 @@ class MarkdownViewer {
   }
 
   /**
-   * 사이드바 메뉴 렌더링
-   * @param {Object} navData 
+   * 사이드바 메뉴 렌더링: 독립적으로 접고 펼칠 수 있는 대분류
    */
   renderSidebar(navData) {
     if (!this.sidebarContainer) return;
     this.sidebarContainer.innerHTML = '';
     this.allDocsList = [];
 
-    navData.categories.forEach(cat => {
-      const titleEl = document.createElement('div');
-      titleEl.className = 'sidebar-title';
-      titleEl.textContent = cat.title;
-      this.sidebarContainer.appendChild(titleEl);
+    navData.categories.forEach((cat, categoryIndex) => {
+      const group = document.createElement('section');
+      group.className = 'sidebar-category-group';
+      group.dataset.categoryIndex = String(categoryIndex);
 
+      const categoryId = `sidebar-category-${categoryIndex}`;
+      const listId = `sidebar-menu-${categoryIndex}`;
+      const header = document.createElement('button');
+      header.type = 'button';
+      header.className = 'sidebar-category';
+      header.id = categoryId;
+      header.setAttribute('aria-expanded', 'true');
+      header.setAttribute('aria-controls', listId);
+
+      const title = document.createElement('span');
+      title.className = 'sidebar-category-title';
+      title.textContent = cat.title;
+
+      const icon = document.createElement('span');
+      icon.className = 'sidebar-category-icon';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = '▼';
+
+      header.append(title, icon);
+
+      const listWrap = document.createElement('div');
+      listWrap.className = 'sidebar-sublist-wrap';
       const ulEl = document.createElement('ul');
       ulEl.className = 'sidebar-menu';
+      ulEl.id = listId;
 
-      cat.items.forEach(item => {
-        this.allDocsList.push(item);
+      (cat.items || []).forEach(item => {
+        const doc = { ...item, categoryIndex };
+        this.allDocsList.push(doc);
 
         const li = document.createElement('li');
         const a = document.createElement('a');
@@ -142,13 +164,36 @@ class MarkdownViewer {
         a.href = `#${item.path}`;
         a.dataset.path = item.path;
         a.textContent = item.title;
-        
         li.appendChild(a);
         ulEl.appendChild(li);
       });
 
-      this.sidebarContainer.appendChild(ulEl);
+      listWrap.appendChild(ulEl);
+      group.append(header, listWrap);
+      this.sidebarContainer.appendChild(group);
+
+      header.addEventListener('click', () => {
+        const expanded = header.getAttribute('aria-expanded') === 'true';
+        this.setCategoryExpanded(group, !expanded);
+        localStorage.setItem(`moduai-category-${categoryIndex}-collapsed`, String(expanded));
+      });
+
+      const savedCollapsed = localStorage.getItem(`moduai-category-${categoryIndex}-collapsed`);
+      this.setCategoryExpanded(group, savedCollapsed !== 'true');
     });
+  }
+
+  /**
+   * 대분류 하나의 펼침/접힘 상태를 설정
+   */
+  setCategoryExpanded(group, expanded) {
+    const header = group.querySelector('.sidebar-category');
+    const wrap = group.querySelector('.sidebar-sublist-wrap');
+    if (!header || !wrap) return;
+
+    group.classList.toggle('expanded', expanded);
+    header.setAttribute('aria-expanded', String(expanded));
+    wrap.setAttribute('aria-hidden', String(!expanded));
   }
 
   /**
