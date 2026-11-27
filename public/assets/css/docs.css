@@ -471,3 +471,70 @@
     flex-direction: column;
   }
 }
+
+
+/* ==========================================================================
+   8. ChatGPT 스타일 문서 프레임: 고정 헤더 + 매끄러운 탐색 패널
+   ========================================================================== */
+.docs-page-wrapper { min-height: calc(100dvh - var(--header-height)); }
+.docs-container { max-width: none; min-height: calc(100dvh - var(--header-height)); }
+.docs-sidebar {
+  box-sizing: border-box;
+  width: 280px;
+  padding: 18px 12px 24px;
+  background: var(--bg-primary);
+  border-right: 1px solid var(--border-subtle);
+  transition: width .22s ease, padding .22s ease, border-color .22s ease, transform .22s ease;
+}
+.docs-sidebar.collapsed {
+  width: 0 !important;
+  padding-left: 0 !important; padding-right: 0 !important;
+  border-right-color: transparent !important;
+  opacity: 1;
+}
+.docs-sidebar.collapsed #docs-sidebar-menu { visibility: hidden; }
+.docs-content { padding: 44px clamp(24px, 5vw, 72px) 100px; }
+.docs-toc { border-left: 1px solid var(--border-subtle); }
+.sidebar-toggle-btn {
+  width: 36px; height: 36px; flex: 0 0 36px;
+  border: 1px solid transparent; border-radius: 9px;
+  margin-right: 8px; color: var(--text-muted);
+}
+.sidebar-toggle-btn:hover { background: var(--bg-hover); border-color: var(--border-subtle); }
+.sidebar-link { padding: 9px 12px; border-radius: 9px; font-size: .875rem; }
+.sidebar-link.active { background: var(--bg-hover); border-color: transparent; box-shadow: none; color: var(--text-main); }
+.docs-sidebar nav { max-width: 100%; }
+.docs-sidebar .sidebar-title { padding-left: 12px; }
+.docs-sidebar .sidebar-menu { margin-bottom: 16px; }
+.docs-sidebar .sidebar-link:focus-visible,
+.sidebar-toggle-btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.docs-backdrop { display: none; }
+@media (min-width: 769px) {
+  .site-header { position: sticky; top: 0; z-index: 1000; }
+  .docs-sidebar { position: sticky; top: var(--header-height); height: calc(100dvh - var(--header-height)); }
+  .docs-content { min-width: 0; }
+}
+@media (max-width: 768px) {
+  .site-header { position: sticky; top: 0; z-index: 1000; }
+  .docs-sidebar {
+    position: fixed; top: var(--header-height); bottom: 0; left: 0;
+    width: min(300px, 86vw); height: auto; z-index: 1002;
+    padding: 18px 12px 28px; background: var(--bg-primary);
+    box-shadow: 12px 0 32px rgba(15,23,42,.12);
+    transform: translateX(0); opacity: 1;
+    transition: transform .24s cubic-bezier(.2,.8,.2,1);
+  }
+  .docs-sidebar.collapsed {
+    width: min(300px, 86vw) !important; padding: 18px 12px 28px !important;
+    transform: translateX(-105%); opacity: 1; display: block;
+  }
+  .docs-sidebar.collapsed #docs-sidebar-menu { visibility: visible; }
+  .docs-backdrop {
+    display: block; position: fixed; inset: var(--header-height) 0 0;
+    background: rgba(15,23,42,.32); z-index: 1001;
+    opacity: 0; visibility: hidden; transition: opacity .2s ease, visibility .2s;
+  }
+  .docs-backdrop.visible { opacity: 1; visibility: visible; }
+  body.sidebar-open { overflow: hidden; }
+  .docs-content { padding: 28px 18px 64px; }
+}
