@@ -197,7 +197,11 @@ class MarkdownViewer {
       if (!res.ok) throw new Error(`문서를 불러올 수 없습니다. (${res.status})`);
       const markdownText = await res.text();
 
-      const parsedHtml = marked.parse(markdownText);
+      // 문서 관리용 메타데이터는 원본 Markdown에 유지하되 웹 화면에서는 숨깁니다.
+      const displayMarkdown = markdownText
+        .replace(/^>\\s*(?:파일명|최종 수정일|분류):.*(?:\\r?\\n|$)/gm, '')
+        .replace(/^\\s+/, '');
+      const parsedHtml = marked.parse(displayMarkdown);
       this.contentContainer.innerHTML = parsedHtml;
 
       // 1. 코드 블록에 헤더 바 및 복사 버튼 부착
