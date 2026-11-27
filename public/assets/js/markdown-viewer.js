@@ -1,6 +1,6 @@
 // 파일명: public/assets/js/markdown-viewer.js
 /**
- * moduai-pr 마크다운 문서 & 강의 뷰어 모듈
+ * moduai-pr 사업·개발 기록 마크다운 뷰어 모듈
  * 기준: docs/스타일-가이드.md (ChatGPT 라이트 모드 디자인 시스템)
  * 1) content/navigation.json 기반 사이드바 자동 구성
  * 2) 사이드바 접기/펼치기(토글) 및 localStorage 상태 저장
