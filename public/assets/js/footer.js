@@ -1,0 +1,43 @@
+/* 파일명: public/assets/js/footer.js */
+/**
+ * moduai 공통 푸터
+ * 모든 공개 페이지에서 동일한 구조와 문구를 사용하도록 중앙 관리합니다.
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.getElementById('site-footer-root');
+  if (!root) return;
+
+  root.innerHTML = `
+    <footer class="site-footer" aria-labelledby="footer-brand-title">
+      <div class="footer-container">
+        <div class="footer-main">
+          <a class="footer-brand" href="index.html" aria-label="moduai 첫 화면">
+            <img src="assets/images/symbol.svg" alt="" width="30" height="30">
+            <span id="footer-brand-title">moduai</span>
+          </a>
+          <p class="footer-manifesto">The World Belongs to Everyone.</p>
+          <p class="footer-subline">Built Together, Open to All.</p>
+          <p class="footer-korean">함께 만들고, 모두에게 열려 있습니다.</p>
+        </div>
+
+        <nav class="footer-navigation" aria-label="푸터 메뉴">
+          <div class="footer-nav-group">
+            <span class="footer-nav-heading">EXPLORE</span>
+            <a href="index.html">모두의 AI 소개</a>
+            <a href="docs.html">사업 · 개발 문서</a>
+          </div>
+          <div class="footer-nav-group">
+            <span class="footer-nav-heading">PLATFORM</span>
+            <a href="https://moduai.smartflex.org" target="_blank" rel="noopener noreferrer">
+              개발 플랫폼 열기 <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 moduai (모두의 AI)</p>
+        <p>세상과 함께 만들고, 모두와 나눕니다.</p>
+      </div>
+    </footer>
+  `;
+});
