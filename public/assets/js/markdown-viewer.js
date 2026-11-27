@@ -119,73 +119,65 @@ class MarkdownViewer {
    * 사이드바 메뉴 렌더링: 독립적으로 접고 펼칠 수 있는 대분류
    */
   renderSidebar(navData) {
-    if (!this.sidebarContainer) return;
-    this.sidebarContainer.innerHTML = '';
     this.allDocsList = [];
-
     navData.categories.forEach((cat, categoryIndex) => {
-      const group = document.createElement('section');
-      group.className = 'sidebar-category-group';
-      group.dataset.categoryIndex = String(categoryIndex);
+      (cat.items || []).forEach(item => this.allDocsList.push({ ...item, categoryIndex }));
+    });
 
-      const categoryId = `sidebar-category-${categoryIndex}`;
-      const listId = `sidebar-menu-${categoryIndex}`;
-      const header = document.createElement('button');
-      header.type = 'button';
-      header.className = 'sidebar-category';
-      header.id = categoryId;
-      header.setAttribute('aria-expanded', 'true');
-      header.setAttribute('aria-controls', listId);
-
-      const title = document.createElement('span');
-      title.className = 'sidebar-category-title';
-      title.textContent = cat.title;
-
-      const icon = document.createElement('span');
-      icon.className = 'sidebar-category-icon';
-      icon.setAttribute('aria-hidden', 'true');
-      icon.textContent = '▼';
-
-      header.append(title, icon);
-
-      const listWrap = document.createElement('div');
-      listWrap.className = 'sidebar-sublist-wrap';
-      const ulEl = document.createElement('ul');
-      ulEl.className = 'sidebar-menu';
-      ulEl.id = listId;
-
-      (cat.items || []).forEach(item => {
-        const doc = { ...item, categoryIndex };
-        this.allDocsList.push(doc);
-
-        const li = document.createElement('li');
-        const a = document.createElement('a');
-        a.className = 'sidebar-link';
-        a.href = `#${item.path}`;
-        a.dataset.path = item.path;
-        a.textContent = item.title;
-        li.appendChild(a);
-        ulEl.appendChild(li);
+    const topNav = document.getElementById('docs-category-nav');
+    if (topNav) {
+      topNav.innerHTML = '';
+      navData.categories.forEach((cat, index) => {
+        const link = document.createElement('a');
+        link.className = 'docs-category-link';
+        link.href = `#${cat.items?.[0]?.path || ''}`;
+        link.dataset.categoryIndex = String(index);
+        link.textContent = cat.title;
+        topNav.appendChild(link);
       });
+    }
 
-      listWrap.appendChild(ulEl);
-      group.append(header, listWrap);
-      this.sidebarContainer.appendChild(group);
+    const initialPath = window.location.hash.replace(/^#/, '').trim();
+    const initialDoc = this.allDocsList.find(doc => doc.path === initialPath);
+    this.activeCategoryIndex = initialDoc ? initialDoc.categoryIndex : 0;
+    this.renderCategorySidebar(this.activeCategoryIndex);
+  }
 
-      header.addEventListener('click', () => {
-        const expanded = header.getAttribute('aria-expanded') === 'true';
-        this.setCategoryExpanded(group, !expanded);
-        localStorage.setItem(`moduai-category-${categoryIndex}-collapsed`, String(expanded));
-      });
+  renderCategorySidebar(categoryIndex) {
+    if (!this.sidebarContainer || !this.navData) return;
+    const category = this.navData.categories[categoryIndex];
+    if (!category) return;
 
-      const savedCollapsed = localStorage.getItem(`moduai-category-${categoryIndex}-collapsed`);
-      this.setCategoryExpanded(group, savedCollapsed !== 'true');
+    this.activeCategoryIndex = categoryIndex;
+    this.sidebarContainer.innerHTML = '';
+
+    const heading = document.createElement('div');
+    heading.className = 'docs-sidebar-heading';
+    heading.textContent = category.title;
+    this.sidebarContainer.appendChild(heading);
+
+    const list = document.createElement('ul');
+    list.className = 'sidebar-menu';
+    (category.items || []).forEach(item => {
+      const li = document.createElement('li');
+      const link = document.createElement('a');
+      link.className = 'sidebar-link';
+      link.href = `#${item.path}`;
+      link.dataset.path = item.path;
+      link.textContent = item.title;
+      li.appendChild(link);
+      list.appendChild(li);
+    });
+    this.sidebarContainer.appendChild(list);
+
+    document.querySelectorAll('.docs-category-link').forEach(link => {
+      const active = Number(link.dataset.categoryIndex) === categoryIndex;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
     });
   }
 
-  /**
-   * 대분류 하나의 펼침/접힘 상태를 설정
-   */
   setCategoryExpanded(group, expanded) {
     const header = group.querySelector('.sidebar-category');
     const wrap = group.querySelector('.sidebar-sublist-wrap');
@@ -334,19 +326,18 @@ class MarkdownViewer {
    * @param {string} docPath 
    */
   updateActiveSidebarLink(docPath) {
-    const allLinks = document.querySelectorAll('.sidebar-link');
-    allLinks.forEach(link => {
-      const isActive = link.dataset.path === docPath;
-      link.classList.toggle('active', isActive);
-
-      if (isActive) {
-        const group = link.closest('.sidebar-category-group');
-        if (group) {
-          this.setCategoryExpanded(group, true);
-          const index = group.dataset.categoryIndex;
-          localStorage.removeItem(`moduai-category-${index}-collapsed`);
-        }
-      }
+    const doc = this.allDocsList.find(item => item.path === docPath);
+    if (doc && doc.categoryIndex !== this.activeCategoryIndex) {
+      this.renderCategorySidebar(doc.categoryIndex);
+    }
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+      link.classList.toggle('active', link.dataset.path === docPath);
+    });
+    document.querySelectorAll('.docs-category-link').forEach(link => {
+      const active = doc && Number(link.dataset.categoryIndex) === doc.categoryIndex;
+      link.classList.toggle('active', Boolean(active));
+      if (active) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
     });
   }
 
