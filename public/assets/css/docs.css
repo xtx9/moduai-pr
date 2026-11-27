@@ -152,6 +152,32 @@
   word-wrap: break-word;
 }
 
+/* 문서 이미지 공통 반응형 규칙
+   Markdown 이미지가 원본 픽셀 크기로 본문을 벗어나지 않도록 제한하고,
+   가로·세로 비율은 원본 그대로 유지합니다. */
+.markdown-body img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 560px;
+  margin: 28px auto;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+
+.markdown-body p:has(> img) {
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .markdown-body img {
+    max-height: 420px;
+    margin: 22px auto;
+    border-radius: var(--radius-sm);
+  }
+}
+
 /* 마크다운 타이포그래피 규격 */
 .markdown-body h1 {
   font-size: 2.1rem;
