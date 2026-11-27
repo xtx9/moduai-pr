@@ -649,3 +649,15 @@
     border-radius: 12px;
   }
 }
+
+/* 프로젝트 히스토리 상단의 생각 흐름도는 본문보다 작게 표시 */
+.markdown-body img[src*="project-thought-timeline.svg"] {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  margin: 12px auto 28px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+}
