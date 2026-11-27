@@ -492,3 +492,29 @@ a:hover {
   .footer-navigation { justify-content: flex-start; gap: 40px; padding-top: 0; }
   .footer-bottom { align-items: flex-start; flex-direction: column; justify-content: center; gap: 4px; padding: 14px 0; }
 }
+
+
+/* 문서 페이지 전용 간결한 푸터 */
+.docs-compact-footer {
+  margin-top: 32px;
+  padding: 0 24px;
+  background: var(--bg-primary);
+}
+.docs-footer-bottom {
+  max-width: 1180px;
+  min-height: 58px;
+  margin: 0 auto;
+  padding: 15px 0;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 20px;
+  color: var(--text-dim);
+  font-size: .77rem;
+}
+.docs-footer-bottom p { margin: 0; }
+@media (max-width: 680px) {
+  .docs-compact-footer { padding: 0 18px; }
+  .docs-footer-bottom { align-items: flex-start; flex-direction: column; justify-content: center; gap: 4px; }
+}
