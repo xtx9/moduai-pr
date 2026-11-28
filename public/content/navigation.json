@@ -50,6 +50,10 @@
         {
           "title": "비전",
           "path": "intro/03-vision"
+        },
+        {
+          "title": "사업의 문제점 및 개선 사항",
+          "path": "intro/12-issues-improvements"
         }
       ]
     },
